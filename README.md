@@ -1,5 +1,5 @@
 # GameTix
-A University project based on C++, Python and Golang.
+A University project based on C#, Python and Golang.
 
 La seguente applicazione è stata sviluppata in ambiente Windows, utilizzando come IDE Visual Studio, pertanto non si è a conoscenza di eventuali problemi legati all'esecuzione su altri IDE.
 Il consiglio è di usare Visual Studio per l'esecuzione dell'applicazione, sfruttando la possibilità di creare terminali direttamente nell'ambiente di sviluppo.
