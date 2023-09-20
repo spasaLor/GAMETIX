@@ -71,7 +71,7 @@ type AbbDisponibile struct {
 
 type InfoBigliettiVenduti struct {
 	Tot_Biglietti int
-	Tot_Incasso   float32
+	Tot_Incasso   float64
 }
 
 func startDB() *sql.DB {
@@ -214,19 +214,25 @@ func queryCaricaPartita(db *sql.DB, casa, ospite, data, ora, tipo string, prezzo
 		res3.Scan(&sport)
 	}
 
-	query4 := fmt.Sprintf("INSERT INTO partita VALUES (default,'%s','%s','%s','%s','%s','%s','%s',%.2f,%.2f,%.2f,%.2f)",
-		sport, data, ora, casa, ospite, tipo, nomeStadio, prezzo_s1, prezzo_s2, prezzo_s3, prezzo_s4)
-
+	query4 := fmt.Sprintf("SELECT * FROM partita where squadra_casa = '%s' AND data = '%s'", casa, data)
 	res4, err4 := db.Query(query4)
 	if err4 != nil {
 		fmt.Print(err4)
 	}
-
-	if res2.Next() == true {
+	if res4.Next() == true {
 		return "Squadra in casa gioca lo stesso giorno"
 	}
-
 	defer res4.Close()
+
+	query5 := fmt.Sprintf("INSERT INTO partita VALUES (default,'%s','%s','%s','%s','%s','%s','%s',%.2f,%.2f,%.2f,%.2f)",
+		sport, data, ora, casa, ospite, tipo, nomeStadio, prezzo_s1, prezzo_s2, prezzo_s3, prezzo_s4)
+
+	res5, err5 := db.Query(query5)
+	if err5 != nil {
+		fmt.Print(err5)
+	}
+
+	defer res5.Close()
 	return "Partita inserita"
 }
 
@@ -568,7 +574,7 @@ func queryAggiornaPrezzoAbb(db *sql.DB, societa, settore1, settore2, settore3, s
 func queryGetBigliettiPartita(db *sql.DB, societa, avversario, tipologia string) InfoBigliettiVenduti {
 	fmt.Println("Query biglietti Partita")
 	var id_partita, biglietti int
-	var incasso float32
+	var incasso float64
 
 	query := fmt.Sprintf("SELECT id_partita FROM partita WHERE squadra_casa = '%s' AND squadra_trasferta = '%s' and tipologia = '%s'",
 		societa, avversario, tipologia)

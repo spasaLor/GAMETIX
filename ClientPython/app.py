@@ -11,7 +11,7 @@ sessione={
     'loggato':False
 }
 
-class windows(Tk):
+class Gametix(Tk):
     def __init__(self, *args, **kwargs):
         Tk.__init__(self, *args, **kwargs)
 
@@ -30,11 +30,12 @@ class windows(Tk):
             frame.grid(row=0, column=0, sticky="nsew")
             
         self.showFrame(login.LoginFrame)
+        
     def showFrame(self, cont):
         frame = self.frames[cont]
         frame.tkraise()
 
 if __name__ == "__main__":
-    testObj = windows()
-    testObj.mainloop()
+    app = Gametix()
+    app.mainloop()
     

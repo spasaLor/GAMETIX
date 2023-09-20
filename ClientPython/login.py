@@ -34,41 +34,7 @@ class LoginFrame(Frame):
         l_password.grid(row=2,column=0)
         self.password.grid(row=3,column=0)
 
-        def funLogin():
-            if len(self.email.get()) == 0 or len(self.password.get()) == 0:
-                messagebox.showwarning("Errore","Uno o più campi vuoti")
-                return
-
-            url = 'http://localhost:8080/login_impiegato'
-
-            credenziali = { 'password': self.password.get(),
-                            'email': self.email.get()
-                        }
-            headers = {'Content-Type': 'application/x-www-form-urlencoded'}
-            response = requests.post(url, data=credenziali, headers=headers)
-
-            if response.text != "Credenziali errate":
-                app.sessione['societa'] = response.text
-                app.sessione['loggato'] = True
-                
-                url='http://localhost:8080/settori_stadio'
-                data={
-                    'societa': app.sessione['societa']
-                }
-                headers = {'Content-Type': 'application/x-www-form-urlencoded'}
-                response = requests.post(url, data=data, headers=headers)
-                jsn=response.json()
-                
-                rows=len(jsn)
-                for i in range (rows): 
-                    app.sessione['settori'].append(jsn[i])
-
-                if app.sessione['loggato'] == True:
-                    controller.showFrame(landing.Landing)
-            else:
-                messagebox.showerror("Errore",response.text)
-
-        btn_log = Button(frameLogin,  text="Entra", command=funLogin, font=("Helvetica",19),cursor="hand2")
+        btn_log = Button(frameLogin,  text="Entra", command= lambda: self.funLogin(controller), font=("Helvetica",19),cursor="hand2")
         btn_log.grid(row=4,column=0,sticky="ew")
 
         l_reg = Label(cont, text="Oppure, se non sei ancora registrato", font=("Helvetica", 15))
@@ -78,3 +44,37 @@ class LoginFrame(Frame):
 
         for widget in frameLogin.winfo_children():
             widget.grid_configure(padx=10,pady=10)
+
+    def funLogin(self,controller):
+        if len(self.email.get()) == 0 or len(self.password.get()) == 0:
+            messagebox.showwarning("Errore","Uno o più campi vuoti")
+            return
+
+        url = 'http://localhost:8080/login_impiegato'
+
+        credenziali = { 'password': self.password.get(),
+                        'email': self.email.get()
+                    }
+        headers = {'Content-Type': 'application/x-www-form-urlencoded'}
+        response = requests.post(url, data=credenziali, headers=headers)
+
+        if response.text != "Credenziali errate":
+            app.sessione['societa'] = response.text
+            app.sessione['loggato'] = True
+            
+            url='http://localhost:8080/settori_stadio'
+            data={
+                'societa': app.sessione['societa']
+            }
+            headers = {'Content-Type': 'application/x-www-form-urlencoded'}
+            response = requests.post(url, data=data, headers=headers)
+            jsn=response.json()
+            
+            rows=len(jsn)
+            for i in range (rows): 
+                app.sessione['settori'].append(jsn[i])
+
+            if app.sessione['loggato'] == True:
+                controller.showFrame(landing.Landing)
+        else:
+            messagebox.showerror("Errore",response.text)

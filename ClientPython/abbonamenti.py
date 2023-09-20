@@ -14,10 +14,10 @@ class FrameAbbonamenti(Frame):
         cont.columnconfigure(1,weight=1)
         cont.columnconfigure(2,weight=1)
       
-        b1 = Button(cont, text="Logout",font=("Helvetica",15),command=lambda: FrameAbbonamenti.logout(self,controller),cursor="hand2")
+        b1 = Button(cont, text="Logout",font=("Helvetica",15),command=lambda: self.logout(controller),cursor="hand2")
         b1.grid(row = 0, column = 0)
 
-        b2 = Button(cont, text="Indietro",font=("Helvetica",15),command=lambda: FrameAbbonamenti.back(self,controller),cursor="hand2")
+        b2 = Button(cont, text="Indietro",font=("Helvetica",15),command=lambda: self.back(controller),cursor="hand2")
         b2.grid(row = 0, column = 2)
 
         title = Label(cont, text="GAMETIX", font=("Helvetica", 20, "bold"),  fg="Black")
@@ -26,36 +26,14 @@ class FrameAbbonamenti(Frame):
         lbl_Abb = Label(cont, text="Inserimento Prezzi Abbonamenti", font=("Helvetica", 20, "bold"),  fg="Black",pady=30)
         lbl_Abb.grid(row=1,column=1)
 
-        frameBox = LabelFrame(cont,text="Informazioni Abbonamenti",pady=30)
-        frameBox.grid(row=2,column=1)
-
-        def showSettori():
-        
-            self.l_settore1 = Label(frameBox, text=app.sessione['settori'][0], font=("Helvetica", 15, "bold"),  fg="gray")
-            self.l_settore1.grid(row=0,column=0,padx=10,pady=5)
-            self.settore1 = Entry(frameBox, font=("Helvetica", 15), bg="lightgray")
-            self.settore1.grid(row=1,column=0,padx=10,pady=5)
-
-            self.l_settore2 = Label(frameBox, text=app.sessione['settori'][1], font=("Helvetica", 15, "bold"),  fg="gray")
-            self.l_settore2.grid(row=2,column=0,padx=10,pady=5)
-            self.settore2 = Entry(frameBox, font=("Helvetica", 15), bg="lightgray")
-            self.settore2.grid(row=3,column=0,padx=10,pady=5)
-
-            self.l_settore3 = Label(frameBox, text=app.sessione['settori'][2], font=("Helvetica", 15, "bold"),  fg="gray")
-            self.l_settore3.grid(row=0,column=1,padx=10,pady=5)
-            self.settore3 = Entry(frameBox, font=("Helvetica", 15), bg="lightgray")
-            self.settore3.grid(row=1,column=1,padx=10,pady=5)
-
-            self.l_settore4 = Label(frameBox, text=app.sessione['settori'][3], font=("Helvetica", 15, "bold"),  fg="gray")
-            self.l_settore4.grid(row=2,column=1,padx=10,pady=5)
-            self.settore4 = Entry(frameBox, font=("Helvetica", 15), bg="lightgray")
-            self.settore4.grid(row=3,column=1,padx=10,pady=5) 
+        self.frameBox = LabelFrame(cont,text="Informazioni Abbonamenti",pady=30)
+        self.frameBox.grid(row=2,column=1)
 
         btnFrame=Frame(cont,pady=50)
         btnFrame.grid(row=3,column=1)
-        btnSettori = Button(btnFrame,name="bottone",  text="Carica Settori", command=showSettori, font=("Helvetica",19),cursor="hand2")
+        btnSettori = Button(btnFrame,name="bottone",  text="Carica Settori", command=self.showSettori, font=("Helvetica",19),cursor="hand2")
         btnSettori.grid(row=0,column=0)
-        btnInvia = Button(btnFrame,name="bottoneInv",  text="Invia Dati", command= lambda:FrameAbbonamenti.aggiornaCostoAbb(self,controller), font=("Helvetica",19),cursor="hand2")
+        btnInvia = Button(btnFrame,name="bottoneInv",  text="Invia Dati", command= lambda:self.aggiornaCostoAbb(controller), font=("Helvetica",19),cursor="hand2")
         btnInvia.grid(row=0,column=1)
 
         for widget in cont.winfo_children():
@@ -63,6 +41,27 @@ class FrameAbbonamenti(Frame):
 
         for widget in btnFrame.winfo_children():
             widget.grid_configure(padx=10)
+
+    def showSettori(self):
+        self.l_settore1 = Label(self.frameBox, text=app.sessione['settori'][0], font=("Helvetica", 15, "bold"),  fg="gray")
+        self.l_settore1.grid(row=0,column=0,padx=10,pady=5)
+        self.settore1 = Entry(self.frameBox, font=("Helvetica", 15), bg="lightgray")
+        self.settore1.grid(row=1,column=0,padx=10,pady=5)
+
+        self.l_settore2 = Label(self.frameBox, text=app.sessione['settori'][1], font=("Helvetica", 15, "bold"),  fg="gray")
+        self.l_settore2.grid(row=2,column=0,padx=10,pady=5)
+        self.settore2 = Entry(self.frameBox, font=("Helvetica", 15), bg="lightgray")
+        self.settore2.grid(row=3,column=0,padx=10,pady=5)
+
+        self.l_settore3 = Label(self.frameBox, text=app.sessione['settori'][2], font=("Helvetica", 15, "bold"),  fg="gray")
+        self.l_settore3.grid(row=0,column=1,padx=10,pady=5)
+        self.settore3 = Entry(self.frameBox, font=("Helvetica", 15), bg="lightgray")
+        self.settore3.grid(row=1,column=1,padx=10,pady=5)
+
+        self.l_settore4 = Label(self.frameBox, text=app.sessione['settori'][3], font=("Helvetica", 15, "bold"),  fg="gray")
+        self.l_settore4.grid(row=2,column=1,padx=10,pady=5)
+        self.settore4 = Entry(self.frameBox, font=("Helvetica", 15), bg="lightgray")
+        self.settore4.grid(row=3,column=1,padx=10,pady=5) 
 
     def aggiornaCostoAbb(self,controller):
         se1=self.settore1.get()
@@ -89,6 +88,7 @@ class FrameAbbonamenti(Frame):
         }
         headers = {'Content-Type': 'application/x-www-form-urlencoded'}
         response = requests.post(url, data=datiPost, headers=headers)
+
         if response.text == "ok":
             messagebox.showinfo("Successo","Prezzi aggiornati con successo")
             controller.showFrame(landing.Landing)
@@ -110,14 +110,14 @@ class FrameAbbonamenti(Frame):
         self.settore4.destroy()
 
     def logout(self,controller):
-        FrameAbbonamenti.clearPage(self)
+        self.clearPage()
         app.sessione['societa']=""
         app.sessione['settori']=[]
         app.sessione['loggato']=False
         controller.showFrame(login.LoginFrame)
 
     def back(self,controller):
-        FrameAbbonamenti.clearPage(self)
+        self.clearPage()
         controller.showFrame(landing.Landing)
 
         
