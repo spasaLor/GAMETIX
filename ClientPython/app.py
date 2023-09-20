@@ -30,7 +30,6 @@ class windows(Tk):
             frame.grid(row=0, column=0, sticky="nsew")
             
         self.showFrame(login.LoginFrame)
-    
     def showFrame(self, cont):
         frame = self.frames[cont]
         frame.tkraise()
@@ -38,3 +37,4 @@ class windows(Tk):
 if __name__ == "__main__":
     testObj = windows()
     testObj.mainloop()
+    

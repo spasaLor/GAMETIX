@@ -74,11 +74,9 @@ type InfoBigliettiVenduti struct {
 	Tot_Incasso   float32
 }
 
-var imp Impiegato
-
 func startDB() *sql.DB {
 
-	db, err := sql.Open("mysql", "<username>:<password>@tcp(localhost:3306)/gametix")
+	db, err := sql.Open("mysql", "root:Lorenzo99@tcp(localhost:3306)/gametix")
 
 	if err != nil {
 		fmt.Println("Controllare la funzione startDB del file databaseManagement per essere sicuri" +
@@ -88,26 +86,6 @@ func startDB() *sql.DB {
 
 	fmt.Println("Database avviato con successo")
 	return db
-}
-
-func esempioQuery(datab *sql.DB) {
-	res, err2 := datab.Query("SELECT * FROM societa")
-
-	if err2 != nil {
-		log.Fatal(err2)
-	}
-
-	for res.Next() {
-
-		var societa Societa
-		err := res.Scan(&societa.Id, &societa.Nome, &societa.Localita, &societa.Sport)
-
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		fmt.Printf("%v\n", societa)
-	}
 }
 
 func queryRegImpiegato(db *sql.DB, societa, nome, cognome, email, pwd string) string {
@@ -148,9 +126,7 @@ func queryLogImpiegato(db *sql.DB, email, pwd string) string {
 	if err != nil {
 		return "Errore Generico"
 	}
-
-	imp.Id = 0
-	imp.Societa = ""
+	var imp Impiegato
 
 	if res.Next() == true {
 		res.Scan(&imp.Id, &imp.Societa, &imp.Nome, &imp.Cognome, &imp.Email, &imp.Password)
@@ -212,7 +188,7 @@ func queryCaricaPartita(db *sql.DB, casa, ospite, data, ora, tipo string, prezzo
 		return "Partita presente"
 	}
 
-	query2 := fmt.Sprintf("SELECT nome FROM stadio where proprietario ='%s'", imp.Societa)
+	query2 := fmt.Sprintf("SELECT nome FROM stadio where proprietario ='%s'", casa)
 	res2, err2 := db.Query(query2)
 	if err2 != nil {
 		fmt.Println(err2)
@@ -256,7 +232,8 @@ func queryCaricaPartita(db *sql.DB, casa, ospite, data, ora, tipo string, prezzo
 
 func queryRegCliente(db *sql.DB, nome, cognome, dataN, email, tel, pwd string) string {
 	fmt.Println("Query Registrazione cliente")
-	res1, err1 := db.Query("SELECT * FROM cliente WHERE email=" + "'" + email + "'")
+	query1 := fmt.Sprintf("SELECT * FROM cliente WHERE email='%s'", email)
+	res1, err1 := db.Query(query1)
 	if err1 != nil {
 		fmt.Println(err1)
 		return "Errore generico"
@@ -269,8 +246,8 @@ func queryRegCliente(db *sql.DB, nome, cognome, dataN, email, tel, pwd string) s
 	password := []byte(pwd)
 	hashedPassword := sha256.Sum256(password)
 
-	query1 := fmt.Sprintf("INSERT INTO cliente VALUES (default,'%s', '%s', '%s', '%s', '%s', '%x' )", nome, cognome, dataN, email, tel, hashedPassword)
-	res2, err2 := db.Query(query1)
+	query2 := fmt.Sprintf("INSERT INTO cliente VALUES (default,'%s', '%s', '%s', '%s', '%s', '%x' )", nome, cognome, dataN, email, tel, hashedPassword)
+	res2, err2 := db.Query(query2)
 
 	if err2 != nil {
 		fmt.Println(err2)
@@ -302,7 +279,6 @@ func queryLogCliente(db *sql.DB, email, pwd string) []string {
 		info_cliente = append(info_cliente, cognome)
 		return info_cliente
 	}
-	fmt.Println(info_cliente)
 	return append(info_cliente, "Credenziali")
 }
 
@@ -313,7 +289,7 @@ func queryGetPartite(db *sql.DB) []Partita {
 
 	fmt.Println("Query Visualizzazione partite")
 	var listaPartite []Partita
-	query := fmt.Sprintf("SELECT * FROM partita WHERE data >= %s ORDER BY data", data)
+	query := fmt.Sprintf("SELECT * FROM partita WHERE data >= '%s' ORDER BY data", data)
 	res, err := db.Query(query)
 
 	if err != nil {
