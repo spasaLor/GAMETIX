@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.pnl_Menu = new System.Windows.Forms.Panel();
+            this.btn_ricarica = new System.Windows.Forms.Button();
             this.btn_exit = new System.Windows.Forms.Button();
             this.pnl_side = new System.Windows.Forms.Panel();
             this.btn_acquisti = new System.Windows.Forms.Button();
@@ -38,6 +39,7 @@
             this.pnl_Logo = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pnl_Title = new System.Windows.Forms.Panel();
+            this.lbl_saldo = new System.Windows.Forms.Label();
             this.lbl_home = new System.Windows.Forms.Label();
             this.pnl_children = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -52,6 +54,7 @@
             // pnl_Menu
             // 
             this.pnl_Menu.BackColor = System.Drawing.Color.DimGray;
+            this.pnl_Menu.Controls.Add(this.btn_ricarica);
             this.pnl_Menu.Controls.Add(this.btn_exit);
             this.pnl_Menu.Controls.Add(this.pnl_side);
             this.pnl_Menu.Controls.Add(this.btn_acquisti);
@@ -64,6 +67,21 @@
             this.pnl_Menu.Name = "pnl_Menu";
             this.pnl_Menu.Size = new System.Drawing.Size(220, 573);
             this.pnl_Menu.TabIndex = 0;
+            // 
+            // btn_ricarica
+            // 
+            this.btn_ricarica.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_ricarica.FlatAppearance.BorderSize = 0;
+            this.btn_ricarica.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ricarica.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_ricarica.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btn_ricarica.Location = new System.Drawing.Point(0, 400);
+            this.btn_ricarica.Name = "btn_ricarica";
+            this.btn_ricarica.Size = new System.Drawing.Size(220, 80);
+            this.btn_ricarica.TabIndex = 6;
+            this.btn_ricarica.Text = "Ricarica Conto";
+            this.btn_ricarica.UseVisualStyleBackColor = true;
+            this.btn_ricarica.Click += new System.EventHandler(this.btn_ricarica_click);
             // 
             // btn_exit
             // 
@@ -172,12 +190,25 @@
             // pnl_Title
             // 
             this.pnl_Title.BackColor = System.Drawing.Color.DarkGray;
+            this.pnl_Title.Controls.Add(this.lbl_saldo);
             this.pnl_Title.Controls.Add(this.lbl_home);
             this.pnl_Title.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_Title.Location = new System.Drawing.Point(220, 0);
             this.pnl_Title.Name = "pnl_Title";
             this.pnl_Title.Size = new System.Drawing.Size(862, 80);
             this.pnl_Title.TabIndex = 1;
+            // 
+            // lbl_saldo
+            // 
+            this.lbl_saldo.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbl_saldo.AutoSize = true;
+            this.lbl_saldo.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbl_saldo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbl_saldo.Location = new System.Drawing.Point(31, 28);
+            this.lbl_saldo.Name = "lbl_saldo";
+            this.lbl_saldo.Size = new System.Drawing.Size(64, 24);
+            this.lbl_saldo.TabIndex = 1;
+            this.lbl_saldo.Text = "label3";
             // 
             // lbl_home
             // 
@@ -278,5 +309,7 @@
         private Label lbl_utente;
         private Label label2;
         private Label label4;
+        public Label lbl_saldo;
+        private Button btn_ricarica;
     }
 }

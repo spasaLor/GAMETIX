@@ -15,20 +15,23 @@ namespace ClientCS.Forms
 {
     public partial class confermaAbbonamento : Form
     {
+        private Utente utenteLoggato;
+
         struct infoAbbonamento
         {
             public string id_cliente { get; set; }
             public Abbonamento abb { get; set; }
         }
         infoAbbonamento dati; 
-        public confermaAbbonamento(Abbonamento abb, string id_cliente)
+        public confermaAbbonamento(Abbonamento abb, Utente user)
         {
+            InitializeComponent();
+            utenteLoggato = user;
             this.dati = new infoAbbonamento
             {
-                id_cliente = id_cliente,
+                id_cliente = utenteLoggato.Id,
                 abb = abb
             };
-            InitializeComponent();
             riempiLabels(abb);
         }
 
@@ -41,6 +44,12 @@ namespace ClientCS.Forms
 
         private async void btn_conferma_Click(object sender, EventArgs e)
         {
+
+            if ((float)utenteLoggato.Saldo < dati.abb.prezzo)
+            {
+                MessageBox.Show("Saldo insufficiente. Effettua una ricarica per procedere", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             HttpClient client = new HttpClient();
             var url = "http://localhost:8080/inserisci_abbonamento";
             var json = JsonSerializer.Serialize(dati);

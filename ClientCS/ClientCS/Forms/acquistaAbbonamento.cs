@@ -15,9 +15,11 @@ namespace ClientCS.Forms
     public partial class acquistaAbbonamento : Form
     {
         System.Windows.Forms.ListView listViewAbbonati;
-        public acquistaAbbonamento()
+        private Utente utenteLoggato;
+        public acquistaAbbonamento(Utente user)
         {
             InitializeComponent();
+            utenteLoggato = user;
             listViewAbbonati = new System.Windows.Forms.ListView();
             listViewAbbonati.ItemActivate+= listViewAbbonati_ItemActivate;
         }
@@ -100,7 +102,7 @@ namespace ClientCS.Forms
             var infoAbb = new Abbonamento(abbSelezionato.Text, abbSelezionato.SubItems[2].Text, abbSelezionato.SubItems[1].Text,
                           float.Parse(abbSelezionato.SubItems[4].Text));
 
-            confermaAbbonamento formConferma = new confermaAbbonamento(infoAbb, Login.utenteLoggato.id);
+            confermaAbbonamento formConferma = new confermaAbbonamento(infoAbb, utenteLoggato);
             formConferma.Show();
 
         }

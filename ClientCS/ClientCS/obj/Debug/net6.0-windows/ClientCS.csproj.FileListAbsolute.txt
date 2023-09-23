@@ -24,3 +24,4 @@ C:\Users\arcap\OneDrive\Documenti\UNICT\APL\GAMETIX\ClientCS\ClientCS\obj\Debug\
 C:\Users\arcap\OneDrive\Documenti\UNICT\APL\GAMETIX\ClientCS\ClientCS\obj\Debug\net6.0-windows\ClientCS.Forms.mieiAcquisti.resources
 C:\Users\arcap\OneDrive\Documenti\UNICT\APL\GAMETIX\ClientCS\ClientCS\obj\Debug\net6.0-windows\ClientCS.Forms.acquistaAbbonamento.resources
 C:\Users\arcap\OneDrive\Documenti\UNICT\APL\GAMETIX\ClientCS\ClientCS\obj\Debug\net6.0-windows\ClientCS.Forms.confermaAbbonamento.resources
+C:\Users\arcap\OneDrive\Documenti\UNICT\APL\GAMETIX\ClientCS\ClientCS\obj\Debug\net6.0-windows\ClientCS.Forms.Ricarica.resources

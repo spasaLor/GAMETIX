@@ -16,12 +16,16 @@ namespace ClientCS.Forms
     {
         List<Biglietto> listaBiglietti;
         List<Abbonamento> listaAbbonamenti;
-        public mieiAcquisti()
+        Utente utenteLoggato;
+
+        public mieiAcquisti(Utente user)
         {
-            listaBiglietti= new List<Biglietto>();
-            listaAbbonamenti= new List<Abbonamento>();
             InitializeComponent();
+            utenteLoggato = user;
+            listaBiglietti = new List<Biglietto>();
+            listaAbbonamenti = new List<Abbonamento>();
             riempiLista();
+            
         }
         public async void riempiLista()
         {
@@ -30,7 +34,7 @@ namespace ClientCS.Forms
 
             var dati = new Dictionary<string, string>
                         {
-                            {"id_cliente",Login.utenteLoggato.id}
+                            {"id_cliente",utenteLoggato.Id}
                         };
             var datiPost = new FormUrlEncodedContent(dati);
             var response = await client.PostAsync(url, datiPost);
@@ -53,12 +57,12 @@ namespace ClientCS.Forms
                 foreach (Biglietto bi in listaBiglietti)
                 {
                     ListViewItem item = new ListViewItem(bi.codice.ToString());
-                    item.SubItems.Add(bi.partita);
+                    item.SubItems.Add(bi.casa+" vs. "+bi.trasferta);
                     item.SubItems.Add(bi.data);
                     item.SubItems.Add(bi.ora);
                     item.SubItems.Add(bi.stadio);
                     item.SubItems.Add(bi.settore);
-                    item.SubItems.Add("€ " + bi.prezzo.ToString());
+                    item.SubItems.Add("€ " + bi.prezzo.ToString("0.00"));
 
                     listView_acquisti.Items.Add(item);
                     
@@ -76,7 +80,7 @@ namespace ClientCS.Forms
                 listView_abbonamenti.FullRowSelect = true;
 
                 listView_abbonamenti.Columns.Add("Codice", 90, HorizontalAlignment.Left);
-                listView_abbonamenti.Columns.Add("Societa", 250, HorizontalAlignment.Left);
+                listView_abbonamenti.Columns.Add("Societa", 150, HorizontalAlignment.Left);
                 listView_abbonamenti.Columns.Add("Stadio", 200, HorizontalAlignment.Left);
                 listView_abbonamenti.Columns.Add("Settore", 170, HorizontalAlignment.Left);
                 listView_abbonamenti.Columns.Add("Prezzo", 70, HorizontalAlignment.Left);
@@ -87,7 +91,7 @@ namespace ClientCS.Forms
                     item.SubItems.Add(abb.societa);
                     item.SubItems.Add(abb.stadio);
                     item.SubItems.Add(abb.settore);
-                    item.SubItems.Add("€ " + abb.prezzo.ToString());
+                    item.SubItems.Add("€ " + abb.prezzo.ToString("0.00"));
 
                     listView_abbonamenti.Items.Add(item);
 

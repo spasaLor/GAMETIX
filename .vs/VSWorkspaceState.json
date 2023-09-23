@@ -1,9 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\ClientCS",
-    "\\Golang"
+    "\\ClientCS"
   ],
-  "SelectedNode": "\\Golang\\databaseManagement.go",
+  "SelectedNode": "\\ClientCS\\ClientCS",
   "PreviewInSolutionExplorer": false
 }

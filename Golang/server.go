@@ -25,6 +25,8 @@ func startServer() {
 	http.HandleFunc("/get_partite_societa", getPartiteSocieta)
 	http.HandleFunc("/aggiorna_costo_abbonamenti", aggiornaCostoAbb)
 	http.HandleFunc("/get_biglietti_partita", getBigliettiPartita)
+	http.HandleFunc("/ricarica", ricarica)
+	http.HandleFunc("/get_saldo", getSaldo)
 
 	http.ListenAndServe(":8080", nil)
 }
@@ -87,6 +89,7 @@ func loginCliente(w http.ResponseWriter, req *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusCreated)
 	json.NewEncoder(w).Encode(resp)
+
 }
 func getPartite(w http.ResponseWriter, req *http.Request) {
 	resp := queryGetPartite(sqlDB)
@@ -97,7 +100,8 @@ func getPartite(w http.ResponseWriter, req *http.Request) {
 func confermaBiglietto(w http.ResponseWriter, req *http.Request) {
 	body, _ := ioutil.ReadAll(req.Body)
 	type Biglietto struct {
-		Partita    string
+		Casa       string
+		Trasferta  string
 		Prezzo     float64
 		Stadio     string
 		Settore    string
@@ -118,7 +122,7 @@ func confermaBiglietto(w http.ResponseWriter, req *http.Request) {
 	}
 	id_cliente, _ := strconv.Atoi(data.Id_Cliente)
 
-	resp := queryInserisciBiglietto(sqlDB, data.Big.Id_Partita, id_cliente, data.Big.Partita, data.Big.Stadio, data.Big.Settore, data.Big.Prezzo)
+	resp := queryInserisciBiglietto(sqlDB, data.Big.Id_Partita, id_cliente, data.Big.Casa, data.Big.Trasferta, data.Big.Stadio, data.Big.Settore, data.Big.Prezzo)
 	fmt.Fprintf(w, resp)
 }
 func getBiglietti(w http.ResponseWriter, req *http.Request) {
@@ -206,4 +210,36 @@ func getBigliettiPartita(w http.ResponseWriter, req *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusCreated)
 	json.NewEncoder(w).Encode(resp)
+}
+
+func ricarica(w http.ResponseWriter, req *http.Request) {
+
+	type infoRicarica struct {
+		Id      float64
+		Importo float64
+	}
+	var info infoRicarica
+
+	body, _ := ioutil.ReadAll(req.Body)
+	err := json.Unmarshal([]byte(body), &info)
+	if err != nil {
+		fmt.Println(err)
+	}
+	resp := queryRicarica(sqlDB, info.Id, info.Importo)
+	fmt.Fprintf(w, resp)
+}
+
+func getSaldo(w http.ResponseWriter, req *http.Request) {
+	type reqData struct {
+		Id int
+	}
+	var d reqData
+	body, _ := ioutil.ReadAll(req.Body)
+	err := json.Unmarshal([]byte(body), &d)
+	if err != nil {
+		fmt.Println(err)
+	}
+	resp := querySaldo(sqlDB, d.Id)
+	fmt.Fprintf(w, `{"saldo": %.2f}`, resp)
+
 }

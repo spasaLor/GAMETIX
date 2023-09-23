@@ -18,7 +18,6 @@ namespace ClientCS
 {
     public partial class Login : Form
     {
-        public static Utente utenteLoggato;
         public Login()
         {
             InitializeComponent();
@@ -55,23 +54,24 @@ namespace ClientCS
 
                 HttpResponseMessage response = await client.PostAsync(url, data);
                 string dataString = await response.Content.ReadAsStringAsync();
+                Debug.WriteLine(dataString.ToList());
                 string[] infoUtente = (string[])JsonConvert.DeserializeObject(dataString, typeof(string[]));
-            
-               
+
+
                 if (infoUtente[0].Equals("Credenziali"))
                 {
-                    MessageBox.Show("Credenziali errate","Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Credenziali errate", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 }
                 else if (infoUtente[0].Equals("Errore generico"))
                 {
-                    MessageBox.Show("Qualcosa è andato storto", "Errore",MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Qualcosa è andato storto", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 }
 
                 else
                 {
-                    utenteLoggato = new Utente(infoUtente[1], infoUtente[2], infoUtente[0]);
-                    new Mainpage().Show();
+                    var utenteLoggato = new Utente(infoUtente[1], infoUtente[2], infoUtente[0], decimal.Parse(infoUtente[3]));
+                    new Mainpage(utenteLoggato).Show();
                     this.Hide();
                 }
 
@@ -79,7 +79,7 @@ namespace ClientCS
             catch (Exception exc)
             {
                 Debug.WriteLine(exc);
-                MessageBox.Show("Errore di connessione al server.","Server error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Errore di connessione al server.", "Server error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         

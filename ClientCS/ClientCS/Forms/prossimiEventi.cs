@@ -22,9 +22,11 @@ namespace ClientCS.Forms
     public partial class prossimiEventi : Form
     {
         List<Partita> listaPartite;
-        public prossimiEventi()
+        Utente utenteLoggato;
+        public prossimiEventi(Utente user)
         {
             InitializeComponent();
+            utenteLoggato= user;
             getPartite();
         }
         public async void  getPartite()
@@ -103,7 +105,7 @@ namespace ClientCS.Forms
                 {listaSettori[3],partitaSelezionata.prezzo_settore_4 },
             };
     
-            acquistaBiglietto formBiglietto=new acquistaBiglietto(partitaSelezionata,prezziSettori);
+            acquistaBiglietto formBiglietto=new acquistaBiglietto(utenteLoggato,partitaSelezionata,prezziSettori);
             formBiglietto.Show();
 
         }

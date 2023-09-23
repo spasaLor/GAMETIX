@@ -16,6 +16,9 @@
     <Compile Update="Forms\prossimiEventi.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Ricarica.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Login.cs">
       <SubType>Form</SubType>
     </Compile>

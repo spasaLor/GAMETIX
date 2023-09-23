@@ -47,7 +47,7 @@ class MainPage(Frame):
         l_ospite.grid(row=1,column=0)
         self.ospite.grid(row=1,column=0)
         
-        l_data = Label(self.leftframe, text="Data Partita (YYYY/MM/DD)", font=("Helvetica", 15, "bold"),  fg="gray")
+        l_data = Label(self.leftframe, text="Data Partita (DD/MM/YYYY)", font=("Helvetica", 15, "bold"),  fg="gray")
         self.data = Entry(self.rightframe, font=("Helvetica", 15), bg="lightgray")
         l_data.grid(row=2,column=0)
         self.data.grid(row=2,column=0)
@@ -168,11 +168,11 @@ class MainPage(Frame):
 
         #controlla che i formati di data e ora siano corretti
         try:
-            date = datetime.strptime(form['data'], "%Y/%m/%d")
+            date = datetime.strptime(form['data'], "%d/%m/%Y")
             time = datetime.strptime(form['ora'], "%H:%M")
             return "ok"
         except ValueError:
-            return "Formato data/ora incorretto \n - Formato data corretto : YYYY/MM/DD\n - Formato ora corretto: HH:MM"
+            return "Formato data/ora incorretto \n - Formato data corretto : DD/MM/YYYY\n - Formato ora corretto: HH:MM"
 
     def clearPage(self):
         self.l_settore1.destroy()

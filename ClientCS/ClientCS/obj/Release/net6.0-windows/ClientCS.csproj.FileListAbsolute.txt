@@ -24,3 +24,4 @@ C:\Users\arcap\OneDrive\Documenti\UNICT\APL\GAMETIX\ClientCS\ClientCS\obj\Releas
 C:\Users\arcap\OneDrive\Documenti\UNICT\APL\GAMETIX\ClientCS\ClientCS\obj\Release\net6.0-windows\ClientCS.pdb
 C:\Users\arcap\OneDrive\Documenti\UNICT\APL\GAMETIX\ClientCS\ClientCS\obj\Release\net6.0-windows\ClientCS.genruntimeconfig.cache
 C:\Users\arcap\OneDrive\Documenti\UNICT\APL\GAMETIX\ClientCS\ClientCS\obj\Release\net6.0-windows\ref\ClientCS.dll
+C:\Users\arcap\OneDrive\Documenti\UNICT\APL\GAMETIX\ClientCS\ClientCS\obj\Release\net6.0-windows\ClientCS.Forms.Ricarica.resources

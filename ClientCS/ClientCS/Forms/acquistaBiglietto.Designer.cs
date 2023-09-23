@@ -56,11 +56,12 @@
             this.lbl_Partita.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_Partita.AutoSize = true;
             this.lbl_Partita.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_Partita.Location = new System.Drawing.Point(264, 73);
+            this.lbl_Partita.Location = new System.Drawing.Point(382, 74);
             this.lbl_Partita.Name = "lbl_Partita";
             this.lbl_Partita.Size = new System.Drawing.Size(78, 32);
             this.lbl_Partita.TabIndex = 1;
             this.lbl_Partita.Text = "label1";
+            this.lbl_Partita.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btn_acquista
             // 

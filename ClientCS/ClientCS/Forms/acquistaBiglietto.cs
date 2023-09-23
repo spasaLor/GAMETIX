@@ -17,17 +17,19 @@ namespace ClientCS.Forms
     {
         Dictionary<string, float> prezziSettori;
         Partita infoPartita;
+        Utente utenteLoggato;
         struct infoBiglietto
         {
             public string id_cliente { get; set; }
             public Biglietto big { get; set; }
         }
 
-        public acquistaBiglietto(Partita infoPartita,Dictionary<string,float> prezziSettori)
+        public acquistaBiglietto(Utente user,Partita infoPartita,Dictionary<string,float> prezziSettori)
         {
             InitializeComponent();
             this.prezziSettori = prezziSettori;
             this.infoPartita = infoPartita;
+            utenteLoggato= user;
             riempiLabels(infoPartita.squadra_casa, infoPartita.squadra_trasferta, infoPartita.data.ToString(),infoPartita.ora,
                 infoPartita.tipologia, prezziSettori.Keys.ToList());
         }
@@ -68,19 +70,23 @@ namespace ClientCS.Forms
 
         private async void btn_acquista_Click(object sender, EventArgs e)
         {
+           if(prezziSettori[comboBox1.SelectedItem.ToString()] > (float)utenteLoggato.Saldo)
+            {
+                MessageBox.Show("Saldo insufficiente. Effettua una ricarica per procedere", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
            if (lbl_Posti.Text.Equals("Posti disponibili: 0")){
                 MessageBox.Show("Non ci sono più posti disponibili in questo settore. Prova a cambiare settore", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             HttpClient client = new HttpClient();
             var url = "http://localhost:8080/conferma_biglietto";
-            string squadre = infoPartita.squadra_casa + " vs " + infoPartita.squadra_trasferta;
-            var biglietto = new Biglietto(infoPartita.id, squadre, infoPartita.data.ToString(), infoPartita.ora,
+            var biglietto = new Biglietto(infoPartita.id,infoPartita.squadra_casa,infoPartita.squadra_trasferta,infoPartita.data.ToString(), infoPartita.ora,
                             prezziSettori[comboBox1.SelectedItem.ToString()], infoPartita.luogo, comboBox1.SelectedItem.ToString());
 
             var info = new infoBiglietto
             {
-                id_cliente = Login.utenteLoggato.id,
+                id_cliente = utenteLoggato.Id,
                 big = biglietto
             };
 
@@ -107,6 +113,5 @@ namespace ClientCS.Forms
             }
         }
 
-      
     }
 }
