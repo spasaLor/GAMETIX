@@ -13,6 +13,7 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Runtime;
 
 namespace ClientCS.Forms
 {
@@ -27,12 +28,12 @@ namespace ClientCS.Forms
         }
 
         public void riempiComboBox() {
-            for(int i = 0; i <= 12; i++)
+            for(int i = 1; i <= 12; i++)
             {
                 comboBox1.Items.Add(i.ToString("D2"));
             }
 
-            for (int i =2022; i<=2032; i++)
+            for (int i =2023; i<=2033; i++)
             {
                 comboBox2.Items.Add(i.ToString());
             }
@@ -42,7 +43,6 @@ namespace ClientCS.Forms
         private string controlloCampi()
         {
             
-
             if (string.IsNullOrEmpty(tbx_importo.Text) || string.IsNullOrEmpty(tbx_carta.Text) || string.IsNullOrEmpty(comboBox1.SelectedItem.ToString()) 
                 || string.IsNullOrEmpty(comboBox2.SelectedItem.ToString()) || string.IsNullOrEmpty(textBox1.Text))
             {
@@ -53,6 +53,7 @@ namespace ClientCS.Forms
                 return "Formato CVV errato";
             }
             return "ok";
+
         }
 
         private async void button1_Click(object sender, EventArgs e)

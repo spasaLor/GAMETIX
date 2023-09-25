@@ -16,13 +16,6 @@ namespace ClientCS.Forms
     {
         System.Windows.Forms.ListView listViewAbbonati;
         private Utente utenteLoggato;
-        public acquistaAbbonamento(Utente user)
-        {
-            InitializeComponent();
-            utenteLoggato = user;
-            listViewAbbonati = new System.Windows.Forms.ListView();
-            listViewAbbonati.ItemActivate+= listViewAbbonati_ItemActivate;
-        }
         struct AbbDisponibili
         {
             public string societa;
@@ -32,6 +25,15 @@ namespace ClientCS.Forms
             public float costo;
         }
 
+        public acquistaAbbonamento(Utente user)
+        {
+            InitializeComponent();
+            utenteLoggato = user;
+            listViewAbbonati = new System.Windows.Forms.ListView();
+            listViewAbbonati.ItemActivate+= listViewAbbonati_ItemActivate;
+        }
+
+        //Popola la listview
         private async void riempiLista(string societa, System.Windows.Forms.ListView listView_abb)
         {
             var url = "http://localhost:8080/get_abbonamenti_disponibili";
@@ -77,6 +79,8 @@ namespace ClientCS.Forms
                 MessageBox.Show("Nessuna società corrisponde alla ricerca, Riprova", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        //Event listener
         private void btn_cerca_Click(object sender, EventArgs e)
         {
             listViewAbbonati.Items.Clear();

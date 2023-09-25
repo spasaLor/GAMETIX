@@ -17,25 +17,28 @@ namespace ClientCS.Forms
         List<Biglietto> listaBiglietti;
         List<Abbonamento> listaAbbonamenti;
         Utente utenteLoggato;
+        HttpClient client;
 
         public mieiAcquisti(Utente user)
         {
             InitializeComponent();
             utenteLoggato = user;
+            client=new HttpClient();
             listaBiglietti = new List<Biglietto>();
             listaAbbonamenti = new List<Abbonamento>();
-            riempiLista();
-            
+            riempiBiglietti();
+            riempiAbbonamenti();
         }
-        public async void riempiLista()
+
+        //Popola la listview dei biglietti
+        public async void riempiBiglietti()
         {
             var url = "http://localhost:8080/get_biglietti";
-            var client = new HttpClient();
-
             var dati = new Dictionary<string, string>
                         {
                             {"id_cliente",utenteLoggato.Id}
                         };
+
             var datiPost = new FormUrlEncodedContent(dati);
             var response = await client.PostAsync(url, datiPost);
             string res = await response.Content.ReadAsStringAsync();
@@ -57,7 +60,7 @@ namespace ClientCS.Forms
                 foreach (Biglietto bi in listaBiglietti)
                 {
                     ListViewItem item = new ListViewItem(bi.codice.ToString());
-                    item.SubItems.Add(bi.casa+" vs. "+bi.trasferta);
+                    item.SubItems.Add(bi.casa + " vs. " + bi.trasferta);
                     item.SubItems.Add(bi.data);
                     item.SubItems.Add(bi.ora);
                     item.SubItems.Add(bi.stadio);
@@ -65,15 +68,25 @@ namespace ClientCS.Forms
                     item.SubItems.Add("€ " + bi.prezzo.ToString("0.00"));
 
                     listView_acquisti.Items.Add(item);
-                    
+
                     this.groupBox1.Controls.Add(listView_acquisti);
                 }
             }
+        }
+        //Popola la listview degli abbonamenti
+        public async void riempiAbbonamenti()
+        {
+            var url = "http://localhost:8080/get_abbonamenti";
+            var dati = new Dictionary<string, string>
+                        {
+                            {"id_cliente",utenteLoggato.Id}
+                        };
 
-            url = "http://localhost:8080/get_abbonamenti";
+            var datiPost = new FormUrlEncodedContent(dati);
             var responseAbb = await client.PostAsync(url, datiPost);
             var resAbb = await responseAbb.Content.ReadAsStringAsync();
             listaAbbonamenti = JsonConvert.DeserializeObject<List<Abbonamento>>(resAbb);
+
             if (listaAbbonamenti != null)
             {
                 listView_abbonamenti.View = View.Details;

@@ -23,17 +23,19 @@ namespace ClientCS.Forms
     {
         List<Partita> listaPartite;
         Utente utenteLoggato;
+        HttpClient client;
         public prossimiEventi(Utente user)
         {
             InitializeComponent();
             utenteLoggato= user;
+            client = new HttpClient();
             getPartite();
         }
+
+        //Recupera le partite dal server
         public async void  getPartite()
-        {
-                       
+        {                    
             var url = "http://localhost:8080/get_partite";
-            var client = new HttpClient();
             var response = await client.GetAsync(url);
             string res =await response.Content.ReadAsStringAsync();
             listaPartite= JsonConvert.DeserializeObject<List<Partita>>(res);
@@ -71,6 +73,7 @@ namespace ClientCS.Forms
             }
         }
 
+        //Event listener per selezionare una delle partite
         private async void listViewPartite_ItemActivate(object sender, EventArgs e)
         {
             List<string> listaSettori;
@@ -81,7 +84,6 @@ namespace ClientCS.Forms
                         float.Parse(scelta.SubItems[7].Text), float.Parse(scelta.SubItems[8].Text), float.Parse(scelta.SubItems[9].Text),
                         float.Parse(scelta.SubItems[10].Text));
  
-            HttpClient client = new HttpClient();
             var url = "http://localhost:8080/settori_stadio";
             var dati = new Dictionary<string, string>
                         {

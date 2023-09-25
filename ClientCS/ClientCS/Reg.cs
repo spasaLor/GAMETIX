@@ -133,7 +133,7 @@ namespace ClientCS
 
                 string responseString = await response.Content.ReadAsStringAsync();
 
-                // controllo utente esistente
+                
                 if (responseString.Equals("Email esistente") == true)
                 {
                     MessageBox.Show("L'email inserita appartiene ad un account già registrato", "Account già esistente", MessageBoxButtons.OK,MessageBoxIcon.Error);

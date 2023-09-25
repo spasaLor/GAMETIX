@@ -23,11 +23,12 @@ namespace ClientCS.Forms
             public Abbonamento abb { get; set; }
         }
         infoAbbonamento dati; 
+
         public confermaAbbonamento(Abbonamento abb, Utente user)
         {
             InitializeComponent();
             utenteLoggato = user;
-            this.dati = new infoAbbonamento
+            dati = new infoAbbonamento
             {
                 id_cliente = utenteLoggato.Id,
                 abb = abb

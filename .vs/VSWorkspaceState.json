@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\ClientCS"
+    "\\ClientCS\\ClientCS",
+    "\\ClientCS\\ClientCS\\Forms",
+    "\\ClientPython"
   ],
-  "SelectedNode": "\\ClientCS\\ClientCS",
+  "SelectedNode": "\\ClientPython\\app.py",
   "PreviewInSolutionExplorer": false
 }

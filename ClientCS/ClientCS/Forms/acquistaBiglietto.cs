@@ -31,16 +31,17 @@ namespace ClientCS.Forms
             this.infoPartita = infoPartita;
             utenteLoggato= user;
             riempiLabels(infoPartita.squadra_casa, infoPartita.squadra_trasferta, infoPartita.data.ToString(),infoPartita.ora,
-                infoPartita.tipologia, prezziSettori.Keys.ToList());
+                 prezziSettori.Keys.ToList());
         }
         
-        private void riempiLabels(string casa, string trasferta, string data, string ora, string tipo, List<string> listaSettori)
+        private void riempiLabels(string casa, string trasferta, string data, string ora, List<string> listaSettori)
         {
-            lbl_Partita.Text = casa + " vs. " + trasferta;
+            lbl_partita.Text = casa+" vs. "+trasferta;
             lbl_info.Text = "Data: " + data + " Orario: " + ora;
             comboBox1.DataSource = listaSettori;
         }
 
+        //Recupera i posti liberi per ogni settore
         private async void postiSettore(string nomeSettore,string nomeStadio,string tipologia)
         {
             HttpClient client = new HttpClient();
@@ -68,6 +69,7 @@ namespace ClientCS.Forms
             postiSettore(se, infoPartita.luogo, infoPartita.tipologia);
         }
 
+        // Event listener per l'acquisto di un biglietto
         private async void btn_acquista_Click(object sender, EventArgs e)
         {
            if(prezziSettori[comboBox1.SelectedItem.ToString()] > (float)utenteLoggato.Saldo)
@@ -79,6 +81,7 @@ namespace ClientCS.Forms
                 MessageBox.Show("Non ci sono più posti disponibili in questo settore. Prova a cambiare settore", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             HttpClient client = new HttpClient();
             var url = "http://localhost:8080/conferma_biglietto";
             var biglietto = new Biglietto(infoPartita.id,infoPartita.squadra_casa,infoPartita.squadra_trasferta,infoPartita.data.ToString(), infoPartita.ora,

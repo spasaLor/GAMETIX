@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.lbl_top = new System.Windows.Forms.Label();
-            this.lbl_Partita = new System.Windows.Forms.Label();
             this.btn_acquista = new System.Windows.Forms.Button();
             this.lbl_settore = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.lbl_Prezzo = new System.Windows.Forms.Label();
             this.lbl_Posti = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lbl_partita = new System.Windows.Forms.Label();
             this.lbl_info = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -51,18 +51,6 @@
             this.lbl_top.TabIndex = 0;
             this.lbl_top.Text = "Evento selezionato:";
             // 
-            // lbl_Partita
-            // 
-            this.lbl_Partita.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbl_Partita.AutoSize = true;
-            this.lbl_Partita.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_Partita.Location = new System.Drawing.Point(382, 74);
-            this.lbl_Partita.Name = "lbl_Partita";
-            this.lbl_Partita.Size = new System.Drawing.Size(78, 32);
-            this.lbl_Partita.TabIndex = 1;
-            this.lbl_Partita.Text = "label1";
-            this.lbl_Partita.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // btn_acquista
             // 
             this.btn_acquista.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -70,7 +58,7 @@
             this.btn_acquista.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_acquista.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_acquista.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_acquista.Location = new System.Drawing.Point(375, 403);
+            this.btn_acquista.Location = new System.Drawing.Point(361, 403);
             this.btn_acquista.Name = "btn_acquista";
             this.btn_acquista.Size = new System.Drawing.Size(198, 69);
             this.btn_acquista.TabIndex = 2;
@@ -116,7 +104,7 @@
             this.lbl_Posti.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_Posti.AutoSize = true;
             this.lbl_Posti.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_Posti.Location = new System.Drawing.Point(401, 345);
+            this.lbl_Posti.Location = new System.Drawing.Point(401, 350);
             this.lbl_Posti.Name = "lbl_Posti";
             this.lbl_Posti.Size = new System.Drawing.Size(78, 32);
             this.lbl_Posti.TabIndex = 6;
@@ -126,10 +114,10 @@
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.Controls.Add(this.lbl_partita);
             this.panel1.Controls.Add(this.lbl_info);
             this.panel1.Controls.Add(this.lbl_top);
             this.panel1.Controls.Add(this.lbl_Posti);
-            this.panel1.Controls.Add(this.lbl_Partita);
             this.panel1.Controls.Add(this.lbl_Prezzo);
             this.panel1.Controls.Add(this.btn_acquista);
             this.panel1.Controls.Add(this.comboBox1);
@@ -138,6 +126,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(982, 519);
             this.panel1.TabIndex = 7;
+            // 
+            // lbl_partita
+            // 
+            this.lbl_partita.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbl_partita.AutoSize = true;
+            this.lbl_partita.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbl_partita.Location = new System.Drawing.Point(264, 75);
+            this.lbl_partita.Name = "lbl_partita";
+            this.lbl_partita.Size = new System.Drawing.Size(78, 32);
+            this.lbl_partita.TabIndex = 9;
+            this.lbl_partita.Text = "label1";
+            this.lbl_partita.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lbl_info
             // 
@@ -168,7 +168,6 @@
         #endregion
 
         private Label lbl_top;
-        private Label lbl_Partita;
         private Button btn_acquista;
         private Label lbl_settore;
         private ComboBox comboBox1;
@@ -176,5 +175,6 @@
         private Label lbl_Posti;
         private Panel panel1;
         private Label lbl_info;
+        private Label lbl_partita;
     }
 }

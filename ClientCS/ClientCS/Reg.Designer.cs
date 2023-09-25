@@ -74,7 +74,7 @@
             this.l_title.AutoSize = true;
             this.l_title.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.l_title.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.l_title.Location = new System.Drawing.Point(486, 17);
+            this.l_title.Location = new System.Drawing.Point(501, 17);
             this.l_title.Name = "l_title";
             this.l_title.Size = new System.Drawing.Size(153, 41);
             this.l_title.TabIndex = 1;
@@ -85,7 +85,7 @@
             // 
             this.l_nome.AutoSize = true;
             this.l_nome.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.l_nome.Location = new System.Drawing.Point(353, 91);
+            this.l_nome.Location = new System.Drawing.Point(353, 95);
             this.l_nome.Name = "l_nome";
             this.l_nome.Size = new System.Drawing.Size(66, 28);
             this.l_nome.TabIndex = 2;
@@ -105,7 +105,7 @@
             // 
             this.l_cognome.AutoSize = true;
             this.l_cognome.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.l_cognome.Location = new System.Drawing.Point(353, 135);
+            this.l_cognome.Location = new System.Drawing.Point(353, 139);
             this.l_cognome.Name = "l_cognome";
             this.l_cognome.Size = new System.Drawing.Size(98, 28);
             this.l_cognome.TabIndex = 4;
@@ -115,7 +115,7 @@
             // 
             this.l_eta.AutoSize = true;
             this.l_eta.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.l_eta.Location = new System.Drawing.Point(353, 183);
+            this.l_eta.Location = new System.Drawing.Point(353, 187);
             this.l_eta.Name = "l_eta";
             this.l_eta.Size = new System.Drawing.Size(140, 28);
             this.l_eta.TabIndex = 5;
@@ -125,7 +125,7 @@
             // 
             this.l_tel.AutoSize = true;
             this.l_tel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.l_tel.Location = new System.Drawing.Point(353, 232);
+            this.l_tel.Location = new System.Drawing.Point(353, 239);
             this.l_tel.Name = "l_tel";
             this.l_tel.Size = new System.Drawing.Size(177, 28);
             this.l_tel.TabIndex = 6;
@@ -135,7 +135,7 @@
             // 
             this.l_mail.AutoSize = true;
             this.l_mail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.l_mail.Location = new System.Drawing.Point(353, 286);
+            this.l_mail.Location = new System.Drawing.Point(353, 293);
             this.l_mail.Name = "l_mail";
             this.l_mail.Size = new System.Drawing.Size(68, 28);
             this.l_mail.TabIndex = 7;
@@ -145,7 +145,7 @@
             // 
             this.l_pwd.AutoSize = true;
             this.l_pwd.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.l_pwd.Location = new System.Drawing.Point(353, 339);
+            this.l_pwd.Location = new System.Drawing.Point(353, 343);
             this.l_pwd.Name = "l_pwd";
             this.l_pwd.Size = new System.Drawing.Size(93, 28);
             this.l_pwd.TabIndex = 8;
@@ -155,7 +155,7 @@
             // 
             this.l_conf.AutoSize = true;
             this.l_conf.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.l_conf.Location = new System.Drawing.Point(353, 392);
+            this.l_conf.Location = new System.Drawing.Point(353, 399);
             this.l_conf.Name = "l_conf";
             this.l_conf.Size = new System.Drawing.Size(183, 28);
             this.l_conf.TabIndex = 9;
@@ -163,55 +163,62 @@
             // 
             // tbx_nome
             // 
+            this.tbx_nome.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tbx_nome.Location = new System.Drawing.Point(599, 92);
             this.tbx_nome.Name = "tbx_nome";
-            this.tbx_nome.Size = new System.Drawing.Size(189, 27);
+            this.tbx_nome.Size = new System.Drawing.Size(189, 34);
             this.tbx_nome.TabIndex = 10;
             // 
             // tbx_cogn
             // 
+            this.tbx_cogn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tbx_cogn.Location = new System.Drawing.Point(599, 136);
             this.tbx_cogn.Name = "tbx_cogn";
-            this.tbx_cogn.Size = new System.Drawing.Size(189, 27);
+            this.tbx_cogn.Size = new System.Drawing.Size(189, 34);
             this.tbx_cogn.TabIndex = 11;
             // 
             // tbx_eta
             // 
+            this.tbx_eta.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tbx_eta.Location = new System.Drawing.Point(599, 184);
             this.tbx_eta.Name = "tbx_eta";
             this.tbx_eta.PlaceholderText = "GG/MM/AAAA";
-            this.tbx_eta.Size = new System.Drawing.Size(189, 27);
+            this.tbx_eta.Size = new System.Drawing.Size(189, 34);
             this.tbx_eta.TabIndex = 12;
             // 
             // tbx_tel
             // 
+            this.tbx_tel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tbx_tel.Location = new System.Drawing.Point(599, 236);
             this.tbx_tel.Name = "tbx_tel";
             this.tbx_tel.PlaceholderText = "Opzionale";
-            this.tbx_tel.Size = new System.Drawing.Size(189, 27);
+            this.tbx_tel.Size = new System.Drawing.Size(189, 34);
             this.tbx_tel.TabIndex = 13;
             // 
             // tbx_mail
             // 
+            this.tbx_mail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tbx_mail.Location = new System.Drawing.Point(599, 290);
             this.tbx_mail.Name = "tbx_mail";
-            this.tbx_mail.Size = new System.Drawing.Size(189, 27);
+            this.tbx_mail.Size = new System.Drawing.Size(189, 34);
             this.tbx_mail.TabIndex = 14;
             // 
             // tbx_pwd
             // 
+            this.tbx_pwd.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tbx_pwd.Location = new System.Drawing.Point(599, 343);
             this.tbx_pwd.Name = "tbx_pwd";
             this.tbx_pwd.PasswordChar = '*';
-            this.tbx_pwd.Size = new System.Drawing.Size(189, 27);
+            this.tbx_pwd.Size = new System.Drawing.Size(189, 34);
             this.tbx_pwd.TabIndex = 15;
             // 
             // tbx_conf
             // 
+            this.tbx_conf.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tbx_conf.Location = new System.Drawing.Point(599, 396);
             this.tbx_conf.Name = "tbx_conf";
             this.tbx_conf.PasswordChar = '*';
-            this.tbx_conf.Size = new System.Drawing.Size(189, 27);
+            this.tbx_conf.Size = new System.Drawing.Size(189, 34);
             this.tbx_conf.TabIndex = 16;
             // 
             // panel1
@@ -222,7 +229,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1082, 86);
+            this.panel1.Size = new System.Drawing.Size(1112, 86);
             this.panel1.TabIndex = 17;
             // 
             // btn_reg
@@ -231,7 +238,7 @@
             this.btn_reg.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_reg.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_reg.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_reg.Location = new System.Drawing.Point(464, 459);
+            this.btn_reg.Location = new System.Drawing.Point(464, 478);
             this.btn_reg.Name = "btn_reg";
             this.btn_reg.Size = new System.Drawing.Size(231, 46);
             this.btn_reg.TabIndex = 18;
@@ -260,7 +267,7 @@
             this.panel2.Controls.Add(this.tbx_nome);
             this.panel2.Location = new System.Drawing.Point(0, 86);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1082, 513);
+            this.panel2.Size = new System.Drawing.Size(1112, 547);
             this.panel2.TabIndex = 19;
             // 
             // Reg
@@ -268,7 +275,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(1082, 603);
+            this.ClientSize = new System.Drawing.Size(1112, 631);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Reg";

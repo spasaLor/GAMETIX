@@ -115,11 +115,10 @@ insert into societa values (default,'Alfa Basket Catania','Catania','Basket');
 insert into societa values (default,'Green Basket Palermo','Palermo','Basket');
 
 -- impiegati
-insert into impiegato values(default,1,"asa","asa","s@.c","6258a5e0eb772911d4f92be5b5db0e14511edbe01d1d0ddd1d5a2cb9db9a56ba");
+insert into impiegato values(default,1,"Utente","Prova","prova@example.com","6258a5e0eb772911d4f92be5b5db0e14511edbe01d1d0ddd1d5a2cb9db9a56ba");
 
 -- clienti registrati alla piattaforma
-insert into cliente values (default,'Lorenzo','Merlino','12/09/1987','merlinol@gmail.com',null,'40bcb10892c5ba4f61889e5fb36751c61f5e93bdf8853a21447934a38ef4e63d');
-insert into cliente values (default,'Silvano','Gialli','02/05/1997','giallis@gmail.com',null,'9657a46bac83f06497ea432d2e787a8a893e92d26829cee257210e6f885c441c');
+insert into cliente values (default,'Utente','Prova','12/09/1987','prova@example.com',null,'6258a5e0eb772911d4f92be5b5db0e14511edbe01d1d0ddd1d5a2cb9db9a56ba',0.0);
 
 -- Stadi per le società
 insert into stadio values (default,'San Filippo','Messina',40,1);
@@ -141,54 +140,62 @@ insert into settore values(default,'Curva Nord',15,2,10);
 insert into settore values(default,'Curva Sud',15,2,10);
 
 -- settori San Filippo;
-insert into settore values(default,'Tribuna A',10,1,0);
-insert into settore values(default,'Tribuna B',10,1,0);
-insert into settore values(default,'Tribuna C',10,1,0);
-insert into settore values(default,'Curva Sud',10,1,0);
+insert into settore values(default,'Tribuna A',10,1,10);
+insert into settore values(default,'Tribuna B',10,1,15);
+insert into settore values(default,'Tribuna C',10,1,20);
+insert into settore values(default,'Curva Sud',10,1,25);
 
 -- settori Barbera
-insert into settore values(default,'Tribuna A',20,3,0);
-insert into settore values(default,'Tribuna Laterale',20,3,0);
-insert into settore values(default,'Curva Nord',10,3,0);
-insert into settore values(default,'Curva Sud',10,3,0);
+insert into settore values(default,'Tribuna A',20,3,10);
+insert into settore values(default,'Tribuna Laterale',20,3,15);
+insert into settore values(default,'Curva Nord',10,3,20);
+insert into settore values(default,'Curva Sud',10,3,25);
 
 -- settori PalaRescifina
-insert into settore values(default,'Settore A',10,4,0);
-insert into settore values(default,'Settore B',10,4,0);
-insert into settore values(default,'Settore C',15,4,0);
-insert into settore values(default,'Settore D',15,4,0);
+insert into settore values(default,'Settore A',10,4,10);
+insert into settore values(default,'Settore B',10,4,15);
+insert into settore values(default,'Settore C',15,4,20);
+insert into settore values(default,'Settore D',15,4,25);
 
 -- settori PalaCatania;
-insert into settore values(default,'Settore A',10,5,0);
-insert into settore values(default,'Settore B',10,5,0);
-insert into settore values(default,'Settore C',15,5,0);
-insert into settore values(default,'Settore D',15,5,0);
+insert into settore values(default,'Settore A',10,5,10);
+insert into settore values(default,'Settore B',10,5,15);
+insert into settore values(default,'Settore C',15,5,20);
+insert into settore values(default,'Settore D',15,5,25);
 
 -- settori PalaFondoPatti
-insert into settore values(default,'Settore A',20,6,0);
-insert into settore values(default,'Settore B',20,6,0);
-insert into settore values(default,'Settore C',10,6,0);
-insert into settore values(default,'Settore D',10,6,0);
+insert into settore values(default,'Settore A',20,6,10);
+insert into settore values(default,'Settore B',20,6,15);
+insert into settore values(default,'Settore C',10,6,20);
+insert into settore values(default,'Settore D',10,6,25);
 
 -- settori PalaSanFilippo
-insert into settore values(default,'Settore A',10,7,0);
-insert into settore values(default,'Settore B',10,7,0);
-insert into settore values(default,'Settore C',15,7,0);
-insert into settore values(default,'Settore D',15,7,0);
+insert into settore values(default,'Settore A',10,7,10);
+insert into settore values(default,'Settore B',10,7,15);
+insert into settore values(default,'Settore C',15,7,20);
+insert into settore values(default,'Settore D',15,7,25);
 
 -- settori PalaDaVinci;
-insert into settore values(default,'Settore A',10,8,0);
-insert into settore values(default,'Settore B',10,8,0);
-insert into settore values(default,'Settore C',15,8,0);
-insert into settore values(default,'Settore D',15,8,0);
+insert into settore values(default,'Settore A',10,8,10);
+insert into settore values(default,'Settore B',10,8,15);
+insert into settore values(default,'Settore C',15,8,20);
+insert into settore values(default,'Settore D',15,8,25);
 
 -- settori PalaMangano;
-insert into settore values(default,'Settore A',20,9,0);
-insert into settore values(default,'Settore B',20,9,0);
-insert into settore values(default,'Settore C',10,9,0);
-insert into settore values(default,'Settore D',10,9,0);
+insert into settore values(default,'Settore A',20,9,10);
+insert into settore values(default,'Settore B',20,9,15);
+insert into settore values(default,'Settore C',10,9,20);
+insert into settore values(default,'Settore D',10,9,25);
 
 -- partite
-insert into partita values(default,'Calcio','2023/09/20','15:00',1,'Monopoli Calcio','Campionato',1,30,20,10,10);
-insert into partita values(default,'Basket','2023/09/24','18:00',7,'Ragusa Basket','Campionato',7,20.50,20.50,10,10);
-insert into partita values(default,'Volley','2023/09/30','18:00',4,'Gela Volley','Coppa',4,23.50,23.50,10,10);
+insert into partita values(default,'Calcio','2023/09/20','15:00',1,'Monopoli Calcio','Campionato',1,10,20,30,40);
+insert into partita values(default,'Calcio','2023/09/26','15:00',2,'Siracusa Calcio','Campionato',2,10,20,30,40);
+insert into partita values(default,'Calcio','2023/10/02','20:45',3,'Bari','Campionato',3,10,20,30,40);
+insert into partita values(default,'Volley','2023/09/30','18:00',4,'Gela Volley','Coppa',4,10,20,30,40);
+insert into partita values(default,'Volley','2023/10/07','16:00',5,'Pallavolo Trapani','Campionato',5,10,20,30,40);
+insert into partita values(default,'Volley','2023/10/06','17:00',6,'Milazzo Volley','Campionato',6,10,20,30,40);
+insert into partita values(default,'Basket','2023/10/04','18:00',7,'Ragusa Basket','Campionato',7,10,20,30,40);
+insert into partita values(default,'Basket','2023/09/30','18:00',8,'Pallacanestro Enna','Coppa',8,10,20,30,40);
+insert into partita values(default,'Basket','2023/09/29','20:00',9,'Basket Agrigento','Amichevole',9,10,20,30,40);
+
+
